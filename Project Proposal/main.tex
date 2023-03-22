@@ -1,7 +1,7 @@
 \documentclass{article}
 %%%%%%% PACKAGES %%%%%%%%
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
+\usepackage{graphicx,wrapfig,lipsum}
 \usepackage{geometry}
 \geometry{a4paper, margin=1in}
 \usepackage{hyperref}
@@ -13,25 +13,40 @@
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,      
-    urlcolor=cyan,
+    urlcolor=blue,
 }
 
-\title{Algorithms: Design \& Analysis Project Proposal}
-\author{Ali Asghar Yousuf $\mid$ Aumaima Rashid $\mid$ Radhika Khatri\\
-        Syed Muhammad Abbas Haider Taqvi $\mid$ Mohammad Haider Abbas
-        }
+\title{Algorithms: Design \& Analysis Project Proposal \\
+        \large Optimizing the Knapsack: \\
+        A Comparative Algorithm Analysis}
+\author{Project Team 2}
 \date{\today}
 
 \begin{document}
 
 \maketitle
 
-\section*{\begin{center}Knapsack\end{center}}
-
+\section*{Team}
+\begin{tabular}{ l l }
+    Ali Asghar Yousuf & ay06993@st.habib.edu.pk \\ 
+    Aumaima Rahid & ar06173@st.habib.edu.pk \\ 
+    Mohammad Haider Abbas & ma06418@st.habib.edu.pk \\
+    Radhika Khatri & rk06365@st.habib.edu.pk \\
+    Syed Muhammad Abbas Haider Taqvi & st06862@st.habib.edu.pk 
+   \end{tabular}
 \section*{Overview}
-We will be solving the Knapsack problem using different algorithms. We will implement the algorithms in \texttt{Python} and compare their results as well as their time complexity.
+We will be solving the 0-1 Knapsack problem using different algorithms. We will implement the algorithms in \texttt{Python} and compare their results as well as their time complexity.
 \section*{Background}
-Knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine which items to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items. The problem often arises in resource allocation where the decision makers have to choose from a set of non-divisible projects or tasks under a fixed budget or time constraint, respectively. It is also used in the context of computer science and operations research, where it is called the bin packing problem, and in microeconomics, where it is called the assignment problem.
+\begin{wrapfigure}{r}{5.5cm}
+\caption{Knapsack}\label{wrap-fig:1}
+\includegraphics[width=5.5cm]{knapsack.png}
+\end{wrapfigure} 
+%------------------------------------------
+Knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine which items to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible.
+It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items. The problem often arises in resource allocation where the decision makers have to choose from a set of non-divisible projects or tasks under a fixed budget or time constraint, respectively.
+It is also used in the context of computer science and operations research, where it is called the bin packing problem, and in microeconomics, where it is called the assignment problem.
+
+There are two variants of the knapsack problem: the 0-1 knapsack problem and the unbounded knapsack problem. In the 0-1 knapsack problem, also called the discrete knapsack problem, each item can be included in the knapsack at most once. In the unbounded knapsack problem, also called the continuous knapsack problem, each item can be included in the knapsack any number of times.
 
 \section*{Algorithms}
 We will be implementing and analyzing the following algorithms:
@@ -63,4 +78,13 @@ We will be using the following dataset:
 \end{itemize}
 
 Note: The dataset maybe changed if we find a better one.
+
+\section*{References}
+\begin{itemize}
+    \item \href{https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/}{0-1 Knapsack Problem}
+    \item \href{https://www.geeksforgeeks.org/brute-force-approach-and-its-pros-and-cons/}{Brute Force Approach}
+    \item \href{https://www.geeksforgeeks.org/greedy-algorithms/}{Greedy Algorithms}
+    \item \href{https://www.geeksforgeeks.org/dynamic-programming/}{Dynamic Programming}
+    \item \href{https://www.sciencedirect.com/topics/mathematics/evolutionary-algorithm/}{Evolutionary Algorithm}
+\end{itemize}
 \end{document}
