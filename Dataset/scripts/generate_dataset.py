@@ -1,7 +1,7 @@
 import os
 from generate_single_instance import very_large_n, very_large_c, very_large_n_and_c, very_large_valued_C, very_large_valued_V, very_large_valued_C_and_V
 
-BASE_GROUP_PATH = "../base_group"
+BASE_GROUP_PATH = "../base_group/"
 FILENAMES_PATH = "../filenames.txt"
 
 

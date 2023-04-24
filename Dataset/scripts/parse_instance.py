@@ -8,9 +8,7 @@ def parse_instance(filepath):
         n, wmax = lines[1].split()
         V = []
         W = []
-        for nm, line in enumerate(lines[2:-2]):
-            if "0 1 0 0 0" in line:
-                print(nm, filepath, "oe pagal hgya re ye")
+        for line in lines[2:-2]:
             vi, wi = line.split()
             V.append(int(vi))
             W.append(int(wi))
