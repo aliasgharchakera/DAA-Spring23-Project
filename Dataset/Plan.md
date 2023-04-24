@@ -2,7 +2,7 @@
 
 ### Groups of Instances
 
-We have divided the instances into 7 groups; One of them is taken from [[artemisa](http://artemisa.unicauca.edu.co/)](http://artemisa.unicauca.edu.co/~johnyortega/instances_01_KP/)
+We have divided the instances into 7 groups; One of them is taken from [artemisa.unicauca.edu.co](http://artemisa.unicauca.edu.co/~johnyortega/instances_01_KP/)
 
 1.  Base Dataset (By artemisa)
 2.  Very Large n (Nummber of items)
