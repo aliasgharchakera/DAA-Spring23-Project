@@ -154,9 +154,9 @@ def generate_instances(dataset_group, num_instances):
     argument num_instances times, and saves the generated instances in the
     folder named on "dataset_group" string
     """
-    directory_path = "../" + dataset_group
-    if not os.path.exists("../" + dataset_group):
-        os.makedirs("../" + dataset_group)
+    directory_path = "../" + str(dataset_group)
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
     for i in range(num_instances):
         instance = dataset_group()
         # instance is a list with first two arguments as int and the other two
