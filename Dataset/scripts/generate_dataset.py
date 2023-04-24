@@ -36,7 +36,7 @@ def very_large_n(arguments):
 
 
 def very_large_c(arguments):
-    n, c_min, c_max, base_group_path, filenames_path = arguments
+    c_min, c_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large c. The
     parameters n, C & V are taken randomly from a file in base_group
@@ -89,7 +89,7 @@ def very_large_n_and_c(arguments):
 
 
 def very_large_valued_C(arguments):
-    n, c, ci_min, ci_max, base_group_path, filenames_path = arguments
+    ci_min, ci_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large valued
     C. The parameters n, c & V are taken randomly from a file in base_group
@@ -112,7 +112,7 @@ def very_large_valued_C(arguments):
 
 
 def very_large_valued_V(arguments):
-    n, c, vi_min, vi_max, base_group_path, filenames_path = arguments
+    vi_min, vi_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large valued
     V. The parameters n, c & C are taken randomly from a file in base_group
@@ -127,6 +127,7 @@ def very_large_valued_V(arguments):
     n, c, C, V = parse_instance(base_group_path+filename)
     C_min = min(C)
     C_max = max(C)
+    c = random.randint(v_min, v_max)*100
     # now we have to generate a random n between n_min and n_max
     for i in range(n):
         C.append(random.randint(C_min, C_max))
@@ -135,7 +136,7 @@ def very_large_valued_V(arguments):
 
 
 def very_large_valued_C_and_V(arguments):
-    n, c, ci_min, ci_max, vi_min, vi_max, base_group_path, filenames_path = arguments
+    ci_min, ci_max, vi_min, vi_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large valued
     C & V. The parameters n & c are taken randomly from a file in base_group
@@ -148,6 +149,7 @@ def very_large_valued_C_and_V(arguments):
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
     n, c, C, V = parse_instance(base_group_path+filename)
+    c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
     for i in range(n):
         C.append(random.randint(ci_min, ci_max))
@@ -182,11 +184,16 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
 def main():
     generate_instances(very_large_n, 1000, 'very_large_n', [
                        750, 1250, BASE_GROUP_PATH, FILENAMES_PATH])
-    # generate_instances(very_large_c, 1000)
-    # generate_instances(very_large_n_and_c, 1000)
-    # generate_instances(very_large_valued_C, 1000)
-    # generate_instances(very_large_valued_V, 1000)
-    # generate_instances(very_large_valued_C_and_V, 1000)
+    generate_instances(very_large_c, 1000, 'very_large_c', [
+        1000, 3000, BASE_GROUP_PATH, FILENAMES_PATH])
+    generate_instances(very_large_n_and_c, 1000, 'very_large_n_and_c', [
+        750, 1250, 3000, 5000, BASE_GROUP_PATH, FILENAMES_PATH])
+    generate_instances(very_large_valued_C, 1000, 'very_large_valued_C', [
+        5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
+    generate_instances(very_large_valued_V, 1000, 'very_large_valued_V', [
+        5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
+    generate_instances(very_large_valued_C_and_V, 1000, 'very_large_valued_C_and_V', [
+        5000, 10000, 5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
 
 
 main()
