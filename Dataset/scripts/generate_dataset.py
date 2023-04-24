@@ -40,7 +40,7 @@ def main():
         5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_valued_W, 1000, 'very_large_valued_W_group', [
         5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_V_and_W, 'very_large_valued_V_and_W_group', [
+    generate_instances(very_large_valued_V_and_W, 1000, 'very_large_valued_V_and_W_group', [
         5000, 10000, 5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
 
 
