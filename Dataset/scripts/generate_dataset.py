@@ -1,5 +1,5 @@
 import os
-from generate_single_instance import very_large_n, very_large_c, very_large_n_and_c, very_large_valued_C, very_large_valued_V, very_large_valued_C_and_V
+from generate_single_instance import very_large_n, very_large_wmax, very_large_n_and_wmax,  very_large_valued_V, very_large_valued_W, very_large_valued_V_and_W
 
 BASE_GROUP_PATH = "../base_group/"
 FILENAMES_PATH = "../filenames.txt"
@@ -30,17 +30,17 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
 
 
 def main():
-    generate_instances(very_large_n, 1000, 'very_large_n', [
+    generate_instances(very_large_n, 1000, 'very_large_n_group', [
                        750, 1250, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_c, 1000, 'very_large_c', [
+    generate_instances(very_large_wmax, 1000, 'very_large_wmax_group', [
         1000, 3000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_n_and_c, 1000, 'very_large_n_and_c', [
+    generate_instances(very_large_n_and_wmax, 1000, 'very_large_n_and_wmax_group', [
         750, 1250, 3000, 5000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_C, 1000, 'very_large_valued_C', [
+    generate_instances(very_large_valued_V, 1000, 'very_large_valued_V_group', [
         5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_V, 1000, 'very_large_valued_V', [
+    generate_instances(very_large_valued_W, 1000, 'very_large_valued_W_group', [
         5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_C_and_V, 1000, 'very_large_valued_C_and_V', [
+    generate_instances(very_large_valued_V_and_W, 'very_large_valued_V_and_W_group', [
         5000, 10000, 5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
 
 

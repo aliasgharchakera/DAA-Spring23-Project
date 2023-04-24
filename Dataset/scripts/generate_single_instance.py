@@ -5,7 +5,9 @@ from parse_instance import parse_instance
 BASE_GROUP_PATH = "../base_group/"
 FILENAMES_PATH = "../filenames.txt"
 
-# sorry but n is n, wmax is c, V is C and W is V
+"""
+sorry but in functions here n is n, wmax is c, V is C and W is V
+"""
 
 
 def very_large_n(arguments):
@@ -34,7 +36,7 @@ def very_large_n(arguments):
     return [n, c, C, V]
 
 
-def very_large_c(arguments):
+def very_large_wmax(arguments):
     c_min, c_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large c. The
@@ -60,7 +62,7 @@ def very_large_c(arguments):
     return [n, c, C, V]
 
 
-def very_large_n_and_c(arguments):
+def very_large_n_and_wmax(arguments):
     n_min, n_max, c_min, c_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large n and
@@ -87,7 +89,7 @@ def very_large_n_and_c(arguments):
     return [n, c, C, V]
 
 
-def very_large_valued_C(arguments):
+def very_large_valued_V(arguments):
     ci_min, ci_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large valued
@@ -110,7 +112,7 @@ def very_large_valued_C(arguments):
     return [n, c, C, V]
 
 
-def very_large_valued_V(arguments):
+def very_large_valued_W(arguments):
     vi_min, vi_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large valued
@@ -134,7 +136,7 @@ def very_large_valued_V(arguments):
     return [n, c, C, V]
 
 
-def very_large_valued_C_and_V(arguments):
+def very_large_valued_V_and_W(arguments):
     ci_min, ci_max, vi_min, vi_max, base_group_path, filenames_path = arguments
     """
     This function generates an instance of the dataset with a very large valued
