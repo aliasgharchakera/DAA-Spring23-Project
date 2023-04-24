@@ -127,7 +127,7 @@ def very_large_valued_V(arguments):
     n, c, C, V = parse_instance(base_group_path+filename)
     C_min = min(C)
     C_max = max(C)
-    c = random.randint(v_min, v_max)*100
+    c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
     for i in range(n):
         C.append(random.randint(C_min, C_max))
