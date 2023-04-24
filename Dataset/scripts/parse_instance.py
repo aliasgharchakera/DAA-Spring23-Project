@@ -4,11 +4,14 @@ def parse_instance(filepath):
     and return a list of [c, n, C:[ci|i=0 to n-1], V:[vi|i=0 to n-1]] with the
     datatype format [int, int, [int] [int]]"""
     with open(filepath, 'r') as f:
-        c, n = f.readline().split()
-        C = []
+        lines = f.readlines()
+        n, wmax = lines[1].split()
         V = []
-        for line in f:
-            ci, vi = line.split()
-            C.append(int(ci))
+        W = []
+        for nm, line in enumerate(lines[2:-2]):
+            if "0 1 0 0 0" in line:
+                print(nm, filepath, "oe pagal hgya re ye")
+            vi, wi = line.split()
             V.append(int(vi))
-    return [int(c), int(n), C, V]
+            W.append(int(wi))
+    return [int(n), int(wmax), V, W]
