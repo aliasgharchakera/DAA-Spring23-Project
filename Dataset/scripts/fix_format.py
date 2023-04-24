@@ -5,9 +5,9 @@ with open('filenames.txt') as f:
     filenames = f.readlines()
 
 for file in filenames:
-    with open('large_scale_optimum/' + file.strip()) as f:
+    with open('../large_scale_optimum/' + file.strip()) as f:
         optimum = f.readlines()[0]
-    with open('large_scale/' + file.strip(), 'r+') as f:
+    with open('../large_scale/' + file.strip(), 'r+') as f:
         content = f.read()
         f.seek(0, 0)
         f.write(optimum.strip() + '\n' + content)
