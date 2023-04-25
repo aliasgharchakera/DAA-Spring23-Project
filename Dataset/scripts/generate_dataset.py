@@ -24,6 +24,7 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
         file_path = directory_path + "/instance_" + \
             "0"*(4-len(str(i))) + str(i) + ".txt"
         with open(file_path, "w") as f:
+            f.write("\n")
             f.write(str(instance[0]) + " " + str(instance[1]) + "\n")
             for ci, vi in zip(instance[2], instance[3]):
                 f.write(str(ci) + " " + str(vi) + "\n")
