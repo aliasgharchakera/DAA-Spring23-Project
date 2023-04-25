@@ -2,7 +2,7 @@ import os
 from generate_single_instance import very_large_n, very_large_wmax, very_large_n_and_wmax,  very_large_valued_V, very_large_valued_W, very_large_valued_V_and_W
 
 BASE_GROUP_PATH = "../base_group/"
-FILENAMES_PATH = "../filenames.txt"
+FILENAMES_PATH = "./filenames.txt"
 
 
 def generate_instances(dataset_group, num_instances, folder_name, arguments):
