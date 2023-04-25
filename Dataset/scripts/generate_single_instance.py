@@ -23,7 +23,7 @@ def very_large_n(arguments):
     # we have to choose a random file from the base_group_path
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
-    n, c, C, V = parse_instance(base_group_path+filename)
+    optimum, n, c, C, V = parse_instance(base_group_path+filename)
     C_min = min(C)
     C_max = max(C)
     V_min = min(V)
@@ -49,7 +49,7 @@ def very_large_wmax(arguments):
     # we have to choose a random file from the base_group_path
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
-    n, c, C, V = parse_instance(base_group_path+filename)
+    optimum, n, c, C, V = parse_instance(base_group_path+filename)
     c = random.randint(c_min, c_max)
     C_min = min(C)
     C_max = max(C)
@@ -75,7 +75,7 @@ def very_large_n_and_wmax(arguments):
     # we have to choose a random file from the base_group_path
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
-    n, c, C, V = parse_instance(base_group_path+filename)
+    optimum, n, c, C, V = parse_instance(base_group_path+filename)
     n = random.randint(n_min, n_max)
     c = random.randint(c_min, c_max)
     C_min = min(C)
@@ -102,7 +102,7 @@ def very_large_valued_V(arguments):
     # we have to choose a random file from the base_group_path
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
-    n, c, C, V = parse_instance(base_group_path+filename)
+    optimum, n, c, C, V = parse_instance(base_group_path+filename)
     V_min = min(V)
     V_max = max(V)
     # now we have to generate a random n between n_min and n_max
@@ -125,7 +125,7 @@ def very_large_valued_W(arguments):
     # we have to choose a random file from the base_group_path
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
-    n, c, C, V = parse_instance(base_group_path+filename)
+    optimum, n, c, C, V = parse_instance(base_group_path+filename)
     C_min = min(C)
     C_max = max(C)
     c = random.randint(vi_min, vi_max)*100
@@ -149,7 +149,7 @@ def very_large_valued_V_and_W(arguments):
     # we have to choose a random file from the base_group_path
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
-    n, c, C, V = parse_instance(base_group_path+filename)
+    optimum, n, c, C, V = parse_instance(base_group_path+filename)
     c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
     for i in range(n):
