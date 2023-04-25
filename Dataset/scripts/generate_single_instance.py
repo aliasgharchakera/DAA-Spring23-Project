@@ -3,7 +3,7 @@ import random
 from parse_instance import parse_instance
 
 BASE_GROUP_PATH = "../base_group/"
-FILENAMES_PATH = "../filenames.txt"
+FILENAMES_PATH = "./filenames.txt"
 
 """
 sorry but in functions here n is n, wmax is c, V is C and W is V

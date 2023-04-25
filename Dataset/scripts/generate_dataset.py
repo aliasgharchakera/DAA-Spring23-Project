@@ -6,7 +6,7 @@ from knapsack_dp import knapsack_dp
 
 
 BASE_GROUP_PATH = "../base_group/"
-FILENAMES_PATH = "../filenames.txt"
+FILENAMES_PATH = "./filenames.txt"
 
 
 def generate_instances(dataset_group, num_instances, folder_name, arguments):
