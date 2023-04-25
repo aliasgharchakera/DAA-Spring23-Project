@@ -8,8 +8,8 @@ We have divided the instances into 7 groups; One of them is taken from [artemisa
 2.  Very Large n (Number of items)
 3.  Very Large wmax (Capacity)
 4.  Very large n & wmax
-5.  Very large values of vi
-6.  Very large values of wi
+5.  Very large values of vi (Profit)
+6.  Very large values of wi (Weight)
 7.  Very Large values of vi & wi
 
 ### Files format
