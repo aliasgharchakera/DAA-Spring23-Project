@@ -28,10 +28,11 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
         file_path = directory_path + "/instance_" + \
             "0"*(4-len(str(i))) + str(i) + ".txt"
         with open(file_path, "w") as f:
-            f.write(str(knapsack_dp(instance[1], instance[3], instance[2], instance[0]))+"\n")
+            # f.write(str(knapsack_dp(instance[1], instance[3], instance[2], instance[0]))+"\n")
             # If you want only blank line, uncomment the below one and comment above one
-            # Not doing this takes a veryyyyy long time that you don't need to spend
-            # f.write("\n")
+            # Not doing this takes a veryyyyy long time that you don't need to spend, 
+            # since it'll then run dp on every instance which are 6000
+            f.write("\n")
             f.write(str(instance[0]) + " " + str(instance[1]) + "\n")
             for ci, vi in zip(instance[2], instance[3]):
                 f.write(str(ci) + " " + str(vi) + "\n")
