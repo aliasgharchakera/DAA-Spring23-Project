@@ -54,9 +54,9 @@ def main():
     generate_instances(very_large_valued_V, 100, 'very_large_valued_V_group', [
         2000, 3000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_valued_W, 100, 'very_large_valued_W_group', [
-        1000, 2000, BASE_GROUP_PATH, FILENAMES_PATH])
+        750, 1250, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_valued_V_and_W, 100, 'very_large_valued_V_and_W_group', [
-        2000, 3000, 1000, 2000, BASE_GROUP_PATH, FILENAMES_PATH])
+        2000, 3000, 750, 1250, BASE_GROUP_PATH, FILENAMES_PATH])
 
 
 main()

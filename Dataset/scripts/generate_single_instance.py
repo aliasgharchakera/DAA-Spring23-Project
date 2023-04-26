@@ -5,6 +5,8 @@ import statistics
 
 BASE_GROUP_PATH = "../base_group/"
 FILENAMES_PATH = "./filenames.txt"
+WMAX = 2000
+N = 100
 
 """
 sorry but in functions here n is n, wmax is c, V is C and W is V
@@ -31,6 +33,7 @@ def very_large_n(arguments):
     # V_max = max(V)
     C_avg = int( statistics.mean(C) )
     V_avg = int( statistics.mean(V) )
+    c = random.randint(WMAX, WMAX+1000)
 
     if V_avg < 50:
         V_avg = 50
@@ -58,14 +61,14 @@ def very_large_wmax(arguments):
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
-    c = random.randint(c_min, c_max)
+    c = random.randint(WMAX, WMAX+1000)
     # C_min = min(C)
     # C_max = max(C)
     # V_min = min(V)
     # V_max = max(V)
     C_avg = int( statistics.mean(C) )
     V_avg = int( statistics.mean(V) )
-
+    n = random.randint(N, N+650)
     if V_avg < 50:
         V_avg = 50
     if C_avg < 50:
@@ -131,6 +134,8 @@ def very_large_valued_V(arguments):
     # V_min = min(V)
     # V_max = max(V)
     V_avg = int( statistics.mean(V) )
+    c = random.randint(WMAX, WMAX+1000)
+    n = random.randint(N, N+650)
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
         C.append(random.randint(ci_min, ci_max))
@@ -155,7 +160,8 @@ def very_large_valued_W(arguments):
     # C_min = min(C)
     # C_max = max(C)
     C_avg = int( statistics.mean(C) )
-    c = random.randint(vi_min, vi_max)*100
+    c = random.randint(WMAX, WMAX+1000)
+    n = random.randint(N, N+650)
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
         C.append(random.randint(C_avg-50, C_avg+50))
@@ -177,7 +183,8 @@ def very_large_valued_V_and_W(arguments):
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
-    c = random.randint(vi_min, vi_max)*100
+    c = random.randint(WMAX, WMAX+1000)
+    n = random.randint(N, N+650)
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
         C.append(random.randint(ci_min, ci_max))
