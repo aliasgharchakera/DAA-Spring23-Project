@@ -1,7 +1,7 @@
 # Path: generate_dataset.py
 import random
 from parse_instance import parse_instance
-import statistics 
+import statistics
 
 BASE_GROUP_PATH = "../base_group/"
 FILENAMES_PATH = "./filenames.txt"
@@ -29,8 +29,8 @@ def very_large_n(arguments):
     # C_max = max(C)
     # V_min = min(V)
     # V_max = max(V)
-    C_avg = statistics.mean(C)
-    V_avg = statistics.mean(V)
+    C_avg = int( statistics.mean(C) )
+    V_avg = int( statistics.mean(V) )
 
     if V_avg < 50:
         V_avg = 50
@@ -63,8 +63,8 @@ def very_large_wmax(arguments):
     # C_max = max(C)
     # V_min = min(V)
     # V_max = max(V)
-    C_avg = statistics.mean(C)
-    V_avg = statistics.mean(V)
+    C_avg = int( statistics.mean(C) )
+    V_avg = int( statistics.mean(V) )
 
     if V_avg < 50:
         V_avg = 50
@@ -100,8 +100,8 @@ def very_large_n_and_wmax(arguments):
     # C_max = max(C)
     # V_min = min(V)
     # V_max = max(V)
-    C_avg = statistics.mean(C)
-    V_avg = statistics.mean(V)
+    C_avg = int( statistics.mean(C) )
+    V_avg = int( statistics.mean(V) )
 
     if V_avg < 50:
         V_avg = 50
@@ -130,7 +130,7 @@ def very_large_valued_V(arguments):
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
     # V_min = min(V)
     # V_max = max(V)
-    V_avg = statistics.mean(V)
+    V_avg = int( statistics.mean(V) )
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
         C.append(random.randint(ci_min, ci_max))
@@ -154,7 +154,7 @@ def very_large_valued_W(arguments):
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
     # C_min = min(C)
     # C_max = max(C)
-    C_avg = statistics.mean(C)
+    C_avg = int( statistics.mean(C) )
     c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
