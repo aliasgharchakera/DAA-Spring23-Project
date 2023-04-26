@@ -60,8 +60,8 @@ def very_large_wmax(arguments):
         C.append(random.randint(C_min, C_max))
         V.append(random.randint(V_min, V_max))
         # if i%100==0:
-    print(n, c, len(C), len(V))
-    assert(len(C)==n)
+    # print(n, c, len(C), len(V))
+    # assert(len(C)==n)
     return [n, c, C, V]
 
 

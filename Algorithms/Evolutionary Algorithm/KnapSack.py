@@ -5,19 +5,22 @@ import selection_scheme as ss
 
 class KnapSack:
 
-    def __init__(self, filepath:str, n:int) -> None:
+    def __init__(self, items:list, N, capacity, n) -> None:
         '''
         Constructor for class knapsack. Reads the file and populate stuff
         '''
-        self.stuff = list()  #(weight, value)
-        with open(filepath) as f:
-            lines = f.readlines()
-            self.num, self.capacity = lines[0].split()
-            self.num, self.capacity = int(self.num), int(self.capacity)
-            for i in lines[1::]:
-                value, weight = i.split()
-                self.stuff.append((int(value), int(weight)))
+        # self.stuff = list()  #(weight, value)
+        # with open(filepath) as f:
+        #     lines = f.readlines()
+        #     self.num, self.capacity = lines[0].split()
+        #     self.num, self.capacity = int(self.num), int(self.capacity)
+        #     for i in lines[1::]:
+        #         value, weight = i.split()
+                # self.stuff.append((int(value), int(weight)))
         # print(len(self.stuff))
+        self.stuff = items
+        self.num = N
+        self.capacity = capacity
         self.numItems = len(self.stuff)
         self.population = self.generatePopulation(n)
         # print(self.population)
@@ -60,7 +63,7 @@ class KnapSack:
 
     def crossOver(self):
 
-        parents = self.selectParents('fitnessProportional')
+        parents = self.selectParents('binaryTournament')
         
         firstParent = self.population[parents[0]]
         secondParent = self.population[parents[1]]
@@ -130,24 +133,13 @@ class KnapSack:
     def getFitness(self):
         return list(self.population.keys())
         
-def run(path, pop, gen, iteration):
-<<<<<<< HEAD
-    bruh = KnapSack(path, pop)
+def run(stuff, n, c, pop, gen, iteration):
+    bruh = KnapSack(stuff, n, c, pop)
     minlst, avglst, avgminlst, avgavglst = list(), list(), list(), list()
     for iteration in range(iteration):
         bruh.generatePopulation(pop)
         for generation in range(gen):
             for offspring in range(5):
-=======
-    bruh = KnapSack(path,pop)
-    # print(bruh.calculateFitness())
-    # bruh.crossOver()
-    minlst, avglst, avgminlst, avgavglst = list(), list(), list(), list()
-    for iteration in range(1):
-        # bruh.generatePopulation(30)
-        for generation in range(gen):
-            for offspring in range(iteration):
->>>>>>> b02068e87bf74e7da82e1420b0cf84d6a4c5dbc1
                 bruh.crossOver()
             bruh.survivalSelection('truncation')
             # print('Max: ',max(bruh.getFitness()))
@@ -166,9 +158,6 @@ def run(path, pop, gen, iteration):
     #         bruh.survivalSelection('truncation')
     # print(bruh.calculateFitness())
     
-def main():
-    for i in range(100):
-        path = f"{i}"
 
 import os
 from sys import path
@@ -176,9 +165,8 @@ path.append("../../Dataset/")
 import time
 from contextlib import contextmanager
 
-timelst = list()
 @contextmanager
-def timer(label: str):
+def timer(label: str, timelst):
     start = time.perf_counter()
     try:
         yield
@@ -195,28 +183,43 @@ def kill_time():
     
 def main():
     categories = ["very_large_n", "very_large_wmax", "very_large_n_and_wmax",  "very_large_valued_V", "very_large_valued_W", "very_large_valued_V_and_W"]
-    time = list()
-    score = list()
     instances = 3
+    iterations = 3
+    avg_score = list()
+    avg_time = list()
     for c in categories:
         for i in range(instances):
+            score = list()
+            timelst = list()
             num = "0"
             if i < 10:
                 num += "00"
             elif i < 100:
                 num += "0"
             location = f"../../Dataset/{c}_group/instance_{num}{i}.txt"
-            with timer("func"):
-                max = run(location, 30, 50, 20)
-            score.append(max)
-            # with open('analysis.csv', 'a') as f:
-            #     f.write(f"{c},{max}")
+            stuff = list()
+            with open(location) as f:
+                lines = f.readlines()
+                num, capacity = lines[0].split()
+                num, capacity = int(num), int(capacity)
+                for i in lines[1::]:
+                    value, weight = i.split()
+                    stuff.append((int(value), int(weight)))
+            for i in range(iterations):
+                with timer("func", timelst):
+                    max = run(stuff, num, capacity, 30, 50, 1)
+                score.append(max)
+            avg_score.append(statistics.mean(score))
+            avg_time.append(statistics.mean(timelst))
     with open('analysis.csv', 'w') as f:
         f.write("score, time\n")
-        for c in categories:
-            for i in range(instances):
-                f.write(f"{score[i]}, {timelst[i]}\n")
-            f.write(f"{c}\n")
+        for i in range(instances*len(categories)):
+            if i % instances == 0:
+                f.write(f"{categories[i//instances]}\n")
+            f.write(f"{avg_score[i]}, {avg_time[i]}\n")
+    
+    plt.plot(avg_score, avg_time, label="max")
+    plt.show()
 
 main()
 

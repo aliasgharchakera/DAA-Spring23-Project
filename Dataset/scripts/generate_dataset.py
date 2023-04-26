@@ -41,11 +41,7 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
             for i in range(instance[0]):
                 ci = instance[2][i]
                 vi = instance[3][i]
-<<<<<<< HEAD
                 f.write(str(vi) + " " + str(ci) + "\n")
-=======
-                f.write(str(ci) + " " + str(vi) + "\n")
->>>>>>> b02068e87bf74e7da82e1420b0cf84d6a4c5dbc1
 
 
 def main():
