@@ -30,7 +30,7 @@ def very_large_n(arguments):
     V_max = max(V)
     # now we have to generate a random n between n_min and n_max
     n = random.randint(n_min, n_max)
-    for i in range(n):
+    for i in range(len(C), n):
         C.append(random.randint(C_min, C_max))
         V.append(random.randint(V_min, V_max))
     return [n, c, C, V]
@@ -56,9 +56,12 @@ def very_large_wmax(arguments):
     V_min = min(V)
     V_max = max(V)
     # now we have to generate a random n between n_min and n_max
-    for i in range(n):
+    for i in range(len(C), n):
         C.append(random.randint(C_min, C_max))
         V.append(random.randint(V_min, V_max))
+        # if i%100==0:
+    print(n, c, len(C), len(V))
+    assert(len(C)==n)
     return [n, c, C, V]
 
 
@@ -83,7 +86,7 @@ def very_large_n_and_wmax(arguments):
     V_min = min(V)
     V_max = max(V)
     # now we have to generate a random n between n_min and n_max
-    for i in range(n):
+    for i in range(len(C), n):
         C.append(random.randint(C_min, C_max))
         V.append(random.randint(V_min, V_max))
     return [n, c, C, V]
@@ -106,7 +109,7 @@ def very_large_valued_V(arguments):
     V_min = min(V)
     V_max = max(V)
     # now we have to generate a random n between n_min and n_max
-    for i in range(n):
+    for i in range(len(C), n):
         C.append(random.randint(ci_min, ci_max))
         V.append(random.randint(V_min, V_max))
     return [n, c, C, V]
@@ -130,7 +133,7 @@ def very_large_valued_W(arguments):
     C_max = max(C)
     c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
-    for i in range(n):
+    for i in range(len(C), n):
         C.append(random.randint(C_min, C_max))
         V.append(random.randint(vi_min, vi_max))
     return [n, c, C, V]
@@ -152,7 +155,7 @@ def very_large_valued_V_and_W(arguments):
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
     c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
-    for i in range(n):
+    for i in range(len(C), n):
         C.append(random.randint(ci_min, ci_max))
         V.append(random.randint(vi_min, vi_max))
     return [n, c, C, V]

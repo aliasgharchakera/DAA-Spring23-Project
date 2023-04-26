@@ -22,6 +22,8 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
         os.makedirs(directory_path)
     for i in range(num_instances):
         instance = dataset_group(arguments)
+        # if i%100==0:
+            # print(instance[0], instance[1], len(instance[2]), len(instance[3]))
         # instance is a list with first two arguments as int and the other two
         # arguments as lists now we have to open a file in the folder named on
         # dataset_group and save the instance in it
@@ -32,9 +34,13 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
             # If you want only blank line, uncomment the below one and comment above one
             # Not doing this takes a veryyyyy long time that you don't need to spend, 
             # since it'll then run dp on every instance which are 6000
-            f.write("\n")
+            # f.write("\n")
             f.write(str(instance[0]) + " " + str(instance[1]) + "\n")
-            for ci, vi in zip(instance[2], instance[3]):
+            # for ci, vi in zip(instance[2], instance[3]):
+            # assert(len(instance[2])==instance[0])
+            for i in range(instance[0]):
+                ci = instance[2][i]
+                vi = instance[3][i]
                 f.write(str(ci) + " " + str(vi) + "\n")
 
 
