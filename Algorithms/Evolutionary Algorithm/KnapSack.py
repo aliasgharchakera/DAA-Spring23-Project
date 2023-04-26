@@ -130,14 +130,12 @@ class KnapSack:
     def getFitness(self):
         return list(self.population.keys())
         
-def main():
-    bruh = KnapSack('f8_l-d_kp_23_10000',30)
-    # print(bruh.calculateFitness())
-    # bruh.crossOver()
+def run(path, pop, gen, iteration):
+    bruh = KnapSack(path, pop)
     minlst, avglst, avgminlst, avgavglst = list(), list(), list(), list()
-    for iteration in range(1):
-        # bruh.generatePopulation(30)
-        for generation in range(40):
+    for iteration in range(iteration):
+        bruh.generatePopulation(pop)
+        for generation in range(gen):
             for offspring in range(5):
                 bruh.crossOver()
             bruh.survivalSelection('rankBase')
@@ -147,7 +145,9 @@ def main():
             # print('Avg: ',statistics.mean(bruh.getFitness()))
         avgminlst.append(statistics.mean(minlst))
         avgavglst.append(statistics.mean(avglst))
-    return minlst, avglst
+    # return minlst, avglst
+    # print('Max: ',max(minlst))
+    return max(minlst)
     # for i in range(10):
     #     for i in range(1000):
     #         for i in range(5):
@@ -155,14 +155,64 @@ def main():
     #         bruh.survivalSelection('truncation')
     # print(bruh.calculateFitness())
 
+import os
+from sys import path
+path.append("../../Dataset/")
+import time
+from contextlib import contextmanager
 
-minlst, avglst = main()
-plt.plot([i for i in range(1, 41)], minlst, label="max")
-plt.plot([i for i in range(1, 41)], avglst, label="avg")
-plt.xlabel('generation')
-plt.title('Plot of average fitness against generations')
-# plt.xlabel('iteration')
-# plt.title('Plot of average fitness against iterations')
-plt.ylabel('fitness')
-plt.legend()
-plt.show()
+timelst = list()
+@contextmanager
+def timer(label: str):
+    start = time.perf_counter()
+    try:
+        yield
+    finally:
+        end = time.perf_counter()
+        print(f"{label}: {end - start:.3f} seconds")
+        timelst.append(end-start)
+
+def kill_time():
+    time.sleep(1)
+# with timer("func"):
+#     kill_time()
+    
+    
+def main():
+    categories = ["very_large_n", "very_large_wmax", "very_large_n_and_wmax",  "very_large_valued_V", "very_large_valued_W", "very_large_valued_V_and_W"]
+    time = list()
+    score = list()
+    instances = 3
+    for c in categories:
+        for i in range(instances):
+            num = "0"
+            if i < 10:
+                num += "00"
+            elif i < 100:
+                num += "0"
+            location = f"../../Dataset/{c}_group/instance_{num}{i}.txt"
+            with timer("func"):
+                max = run(location, 30, 50, 20)
+            score.append(max)
+            # with open('analysis.csv', 'a') as f:
+            #     f.write(f"{c},{max}")
+    with open('analysis.csv', 'w') as f:
+        f.write("score, time\n")
+        for c in categories:
+            for i in range(instances):
+                f.write(f"{score[i]}, {timelst[i]}\n")
+            f.write(f"{c}\n")
+
+main()
+
+
+# minlst, avglst = run()
+# plt.plot([i for i in range(1, 41)], minlst, label="max")
+# plt.plot([i for i in range(1, 41)], avglst, label="avg")
+# plt.xlabel('generation')
+# plt.title('Plot of average fitness against generations')
+# # plt.xlabel('iteration')
+# # plt.title('Plot of average fitness against iterations')
+# plt.ylabel('fitness')
+# plt.legend()
+# plt.show()

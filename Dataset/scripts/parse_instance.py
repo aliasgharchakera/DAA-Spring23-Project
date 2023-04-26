@@ -15,4 +15,5 @@ def parse_instance(filepath):
             vi, wi = line.split()
             V.append(int(vi))
             W.append(int(wi))
-    return [optimum, int(n), int(wmax), V, W]
+    return [optimum, int(n), int(wmax), W, V]
+

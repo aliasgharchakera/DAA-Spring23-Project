@@ -2,7 +2,7 @@ import os
 from generate_single_instance import very_large_n, very_large_wmax, very_large_n_and_wmax,  very_large_valued_V, very_large_valued_W, very_large_valued_V_and_W
 from sys import path
 path.append("../../Algorithms/")
-from knapsack_dp import knapsack_dp
+# from knapsack_dp import knapsack_dp
 
 
 BASE_GROUP_PATH = "../base_group/"
@@ -22,6 +22,8 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
         os.makedirs(directory_path)
     for i in range(num_instances):
         instance = dataset_group(arguments)
+        # if i%100==0:
+            # print(instance[0], instance[1], len(instance[2]), len(instance[3]))
         # instance is a list with first two arguments as int and the other two
         # arguments as lists now we have to open a file in the folder named on
         # dataset_group and save the instance in it
@@ -32,24 +34,28 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
             # If you want only blank line, uncomment the below one and comment above one
             # Not doing this takes a veryyyyy long time that you don't need to spend, 
             # since it'll then run dp on every instance which are 6000
-            f.write("\n")
+            # f.write("\n")
             f.write(str(instance[0]) + " " + str(instance[1]) + "\n")
-            for ci, vi in zip(instance[2], instance[3]):
-                f.write(str(ci) + " " + str(vi) + "\n")
+            # for ci, vi in zip(instance[2], instance[3]):
+            # assert(len(instance[2])==instance[0])
+            for i in range(instance[0]):
+                ci = instance[2][i]
+                vi = instance[3][i]
+                f.write(str(vi) + " " + str(ci) + "\n")
 
 
 def main():
-    generate_instances(very_large_n, 1000, 'very_large_n_group', [
+    generate_instances(very_large_n, 100, 'very_large_n_group', [
                        750, 1250, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_wmax, 1000, 'very_large_wmax_group', [
+    generate_instances(very_large_wmax, 100, 'very_large_wmax_group', [
         1000, 3000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_n_and_wmax, 1000, 'very_large_n_and_wmax_group', [
+    generate_instances(very_large_n_and_wmax, 100, 'very_large_n_and_wmax_group', [
         750, 1250, 3000, 5000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_V, 1000, 'very_large_valued_V_group', [
+    generate_instances(very_large_valued_V, 100, 'very_large_valued_V_group', [
         5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_W, 1000, 'very_large_valued_W_group', [
+    generate_instances(very_large_valued_W, 100, 'very_large_valued_W_group', [
         5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
-    generate_instances(very_large_valued_V_and_W, 1000, 'very_large_valued_V_and_W_group', [
+    generate_instances(very_large_valued_V_and_W, 100, 'very_large_valued_V_and_W_group', [
         5000, 10000, 5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
 
 
