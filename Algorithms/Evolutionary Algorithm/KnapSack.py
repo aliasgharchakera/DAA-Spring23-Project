@@ -60,7 +60,7 @@ class KnapSack:
 
     def crossOver(self):
 
-        parents = self.selectParents('binaryTournament')
+        parents = self.selectParents('fitnessProportional')
         
         firstParent = self.population[parents[0]]
         secondParent = self.population[parents[1]]
@@ -131,14 +131,25 @@ class KnapSack:
         return list(self.population.keys())
         
 def run(path, pop, gen, iteration):
+<<<<<<< HEAD
     bruh = KnapSack(path, pop)
     minlst, avglst, avgminlst, avgavglst = list(), list(), list(), list()
     for iteration in range(iteration):
         bruh.generatePopulation(pop)
         for generation in range(gen):
             for offspring in range(5):
+=======
+    bruh = KnapSack(path,pop)
+    # print(bruh.calculateFitness())
+    # bruh.crossOver()
+    minlst, avglst, avgminlst, avgavglst = list(), list(), list(), list()
+    for iteration in range(1):
+        # bruh.generatePopulation(30)
+        for generation in range(gen):
+            for offspring in range(iteration):
+>>>>>>> b02068e87bf74e7da82e1420b0cf84d6a4c5dbc1
                 bruh.crossOver()
-            bruh.survivalSelection('rankBase')
+            bruh.survivalSelection('truncation')
             # print('Max: ',max(bruh.getFitness()))
             minlst.append(max(bruh.getFitness()))
             avglst.append(statistics.mean(bruh.getFitness()))
@@ -154,6 +165,10 @@ def run(path, pop, gen, iteration):
     #             bruh.crossOver()
     #         bruh.survivalSelection('truncation')
     # print(bruh.calculateFitness())
+    
+def main():
+    for i in range(100):
+        path = f"{i}"
 
 import os
 from sys import path

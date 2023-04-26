@@ -11,7 +11,7 @@ def parse_instance(filepath):
         n, wmax = lines[1].split()
         V = []
         W = []
-        for line in lines[2:-2]:
+        for line in lines[1:-1]:
             vi, wi = line.split()
             V.append(int(vi))
             W.append(int(wi))
