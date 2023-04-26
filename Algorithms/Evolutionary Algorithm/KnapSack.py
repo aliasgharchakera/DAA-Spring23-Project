@@ -60,7 +60,7 @@ class KnapSack:
 
     def crossOver(self):
 
-        parents = self.selectParents('binaryTournament')
+        parents = self.selectParents('fitnessProportional')
         
         firstParent = self.population[parents[0]]
         secondParent = self.population[parents[1]]
@@ -130,17 +130,17 @@ class KnapSack:
     def getFitness(self):
         return list(self.population.keys())
         
-def main():
-    bruh = KnapSack('f8_l-d_kp_23_10000',30)
+def run(path, pop, gen, iteration):
+    bruh = KnapSack(path,pop)
     # print(bruh.calculateFitness())
     # bruh.crossOver()
     minlst, avglst, avgminlst, avgavglst = list(), list(), list(), list()
     for iteration in range(1):
         # bruh.generatePopulation(30)
-        for generation in range(40):
-            for offspring in range(5):
+        for generation in range(gen):
+            for offspring in range(iteration):
                 bruh.crossOver()
-            bruh.survivalSelection('rankBase')
+            bruh.survivalSelection('truncation')
             # print('Max: ',max(bruh.getFitness()))
             minlst.append(max(bruh.getFitness()))
             avglst.append(statistics.mean(bruh.getFitness()))
@@ -154,9 +154,13 @@ def main():
     #             bruh.crossOver()
     #         bruh.survivalSelection('truncation')
     # print(bruh.calculateFitness())
+    
+def main():
+    for i in range(100):
+        path = f"{i}"
 
 
-minlst, avglst = main()
+minlst, avglst = run()
 plt.plot([i for i in range(1, 41)], minlst, label="max")
 plt.plot([i for i in range(1, 41)], avglst, label="avg")
 plt.xlabel('generation')
