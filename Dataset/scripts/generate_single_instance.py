@@ -1,6 +1,7 @@
 # Path: generate_dataset.py
 import random
 from parse_instance import parse_instance
+import statistics 
 
 BASE_GROUP_PATH = "../base_group/"
 FILENAMES_PATH = "./filenames.txt"
@@ -24,15 +25,22 @@ def very_large_n(arguments):
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
-    C_min = min(C)
-    C_max = max(C)
-    V_min = min(V)
-    V_max = max(V)
+    # C_min = min(C)
+    # C_max = max(C)
+    # V_min = min(V)
+    # V_max = max(V)
+    C_avg = statistics.mean(C)
+    V_avg = statistics.mean(V)
+
+    if V_avg < 50:
+        V_avg = 50
+    if C_avg < 50:
+        C_avg = 50
     # now we have to generate a random n between n_min and n_max
     n = random.randint(n_min, n_max)
     for i in range(len(C), n):
-        C.append(random.randint(C_min, C_max))
-        V.append(random.randint(V_min, V_max))
+        C.append(random.randint(C_avg-50, C_avg+50))
+        V.append(random.randint(V_avg-50, V_avg+50))
     return [n, c, C, V]
 
 
@@ -51,14 +59,21 @@ def very_large_wmax(arguments):
     # now we have to open the file and read the values of c, C & V
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
     c = random.randint(c_min, c_max)
-    C_min = min(C)
-    C_max = max(C)
-    V_min = min(V)
-    V_max = max(V)
+    # C_min = min(C)
+    # C_max = max(C)
+    # V_min = min(V)
+    # V_max = max(V)
+    C_avg = statistics.mean(C)
+    V_avg = statistics.mean(V)
+
+    if V_avg < 50:
+        V_avg = 50
+    if C_avg < 50:
+        C_avg = 50
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
-        C.append(random.randint(C_min, C_max))
-        V.append(random.randint(V_min, V_max))
+        C.append(random.randint(C_avg-50, C_avg+50))
+        V.append(random.randint(V_avg-50, V_avg+50))
         # if i%100==0:
     # print(n, c, len(C), len(V))
     # assert(len(C)==n)
@@ -81,14 +96,21 @@ def very_large_n_and_wmax(arguments):
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
     n = random.randint(n_min, n_max)
     c = random.randint(c_min, c_max)
-    C_min = min(C)
-    C_max = max(C)
-    V_min = min(V)
-    V_max = max(V)
+    # C_min = min(C)
+    # C_max = max(C)
+    # V_min = min(V)
+    # V_max = max(V)
+    C_avg = statistics.mean(C)
+    V_avg = statistics.mean(V)
+
+    if V_avg < 50:
+        V_avg = 50
+    if C_avg < 50:
+        C_avg = 50
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
-        C.append(random.randint(C_min, C_max))
-        V.append(random.randint(V_min, V_max))
+        C.append(random.randint(C_avg-50, C_avg+50))
+        V.append(random.randint(V_avg-50, V_avg+50))
     return [n, c, C, V]
 
 
@@ -106,12 +128,13 @@ def very_large_valued_V(arguments):
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
-    V_min = min(V)
-    V_max = max(V)
+    # V_min = min(V)
+    # V_max = max(V)
+    V_avg = statistics.mean(V)
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
         C.append(random.randint(ci_min, ci_max))
-        V.append(random.randint(V_min, V_max))
+        V.append(random.randint(V_avg-50, V_avg+50))
     return [n, c, C, V]
 
 
@@ -129,12 +152,13 @@ def very_large_valued_W(arguments):
     filename = filenames[random.randint(0, len(filenames)-1)][:-1]
     # now we have to open the file and read the values of c, C & V
     optimum, n, c, C, V = parse_instance(base_group_path+filename)
-    C_min = min(C)
-    C_max = max(C)
+    # C_min = min(C)
+    # C_max = max(C)
+    C_avg = statistics.mean(C)
     c = random.randint(vi_min, vi_max)*100
     # now we have to generate a random n between n_min and n_max
     for i in range(len(C), n):
-        C.append(random.randint(C_min, C_max))
+        C.append(random.randint(C_avg-50, C_avg+50))
         V.append(random.randint(vi_min, vi_max))
     return [n, c, C, V]
 
