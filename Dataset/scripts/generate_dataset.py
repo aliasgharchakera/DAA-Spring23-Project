@@ -46,17 +46,17 @@ def generate_instances(dataset_group, num_instances, folder_name, arguments):
 
 def main():
     generate_instances(very_large_n, 100, 'very_large_n_group', [
-                       750, 1250, BASE_GROUP_PATH, FILENAMES_PATH])
+                       1000, 2000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_wmax, 100, 'very_large_wmax_group', [
-        1000, 3000, BASE_GROUP_PATH, FILENAMES_PATH])
+        5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_n_and_wmax, 100, 'very_large_n_and_wmax_group', [
-        750, 1250, 3000, 5000, BASE_GROUP_PATH, FILENAMES_PATH])
+        1000, 2000, 5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_valued_V, 100, 'very_large_valued_V_group', [
-        5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
+        2000, 3000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_valued_W, 100, 'very_large_valued_W_group', [
-        5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
+        1000, 2000, BASE_GROUP_PATH, FILENAMES_PATH])
     generate_instances(very_large_valued_V_and_W, 100, 'very_large_valued_V_and_W_group', [
-        5000, 10000, 5000, 10000, BASE_GROUP_PATH, FILENAMES_PATH])
+        2000, 3000, 1000, 2000, BASE_GROUP_PATH, FILENAMES_PATH])
 
 
 main()

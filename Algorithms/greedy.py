@@ -20,24 +20,93 @@
 
 def knapsack(items, capacity):
     # Sort items by value-to-weight ratio in descending order
-    items.sort(key=lambda x: x[1] / x[0], reverse=True)
+    items.sort(key=lambda x: x[0] / x[1], reverse=True)
 
     total_value = 0
     selected_items = []
 
-    for weight, value in items:
+    for value, weight in items:
         if capacity >= weight:  # If item fits in knapsack
             total_value += value
-            selected_items.append((weight, value))
+            selected_items.append((value, weight))
             capacity -= weight
 
-    return total_value, selected_items
+    return total_value
 
 
 # Example usage
-items = [(2, 3), (3, 4), (4, 5), (5, 6)]  # List of items with (weight, value) pairs
-capacity = 8  # Knapsack weight capacity
+# items = [(2, 3), (3, 4), (4, 5), (5, 6)]  # List of items with (weight, value) pairs
+# capacity = 8  # Knapsack weight capacity
 
-total_value, selected_items = knapsack(items, capacity)
-print("Total value:", total_value)
-print("Selected items:", selected_items)
+# total_value, selected_items = knapsack(items, capacity)
+# print("Total value:", total_value)
+# print("Selected items:", selected_items)
+
+
+
+
+
+import os
+from sys import path
+path.append("../Dataset/")
+import time
+import statistics
+from contextlib import contextmanager
+import matplotlib.pyplot as plt
+
+@contextmanager
+def timer(label: str, timelst):
+    start = time.perf_counter()
+    try:
+        yield
+    finally:
+        end = time.perf_counter()
+        # print(f"{label}: {end - start:.3f} seconds")
+        timelst.append(end-start)
+
+# main()
+def main():
+    categories = ["very_large_n"]
+    instances = 100
+    iterations = 3
+    avg_score = list(); avg_time = list()
+    n_lst = list(); c_lst = list()
+    for c in categories:
+        for i in range(instances):
+            score = list()
+            timelst = list()
+            
+            num = "0"*(4-len(str(i)))
+            location = f"../Dataset/{c}_group/instance_{num}{i}.txt"
+            items = list()
+            with open(location) as f:
+                lines = f.readlines()
+                num, capacity = lines[0].split()
+                num, capacity = int(num), int(capacity)
+                for i in lines[1::]:
+                    value, weight = i.split()
+                    items.append((int(value), int(weight)))
+                    
+            for i in range(iterations):
+                with timer("func", timelst):
+                    max = knapsack(items, capacity)
+                score.append(max)
+            n_lst.append(num)
+            c_lst.append(capacity)
+            avg_score.append(statistics.mean(score))
+            avg_time.append(statistics.mean(timelst))
+            n_t = list(zip(n_lst, avg_time))
+            n_t.sort(key=lambda x: x[0])
+            # n_t is a list of tuples of (n, time), I want two separate lists of n and time
+            n_list, time_list = zip(*n_t)
+    with open('analysis2.csv', 'w') as f:
+        f.write("score, time\n")
+        for i in range(instances*len(categories)):
+            if i % instances == 0:
+                f.write(f"{categories[i//instances]}\n")
+            f.write(f"{avg_score[i]}, {avg_time[i]}\n")
+    
+    plt.plot(n_list, time_list, label="max")
+    plt.show()
+
+main()
