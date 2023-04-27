@@ -38,7 +38,7 @@ def timer(label: str, timelst):
         # print(f"{label}: {end - start:.3f} seconds")
         timelst.append(end-start)
         
-def vlargen(plotting_instances):
+def main(plotting_instances):
     categories = ["very_large_n"]
     instances = 100
     iterations = 1
@@ -195,7 +195,7 @@ def vlargev(plotting_instances):
 
 def dpplot(plotting_instances = []):
     # plotting_instances = []
-    plotting_instances.append(vlargen(plotting_instances))
+    plotting_instances.append(main(plotting_instances))
     # wmax(plotting_instances)
     # vlargev()
     # print(plotting_instances)

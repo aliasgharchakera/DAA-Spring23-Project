@@ -80,7 +80,7 @@ def timer(label: str, timelst):
         # print(f"{label}: {end - start:.3f} seconds")
         timelst.append(end-start)
         
-def vlargen(plotting_instances):
+def main(plotting_instances):
     categories = ["very_large_n"]
     instances = 100
     iterations = 3
@@ -129,14 +129,14 @@ def vlargen(plotting_instances):
     
     # plt.plot(n_list, time_list, label="max")
     # plt.show()
+    # plotting_instances.append((n_list, time_list))
+    # return plotting_instances
     return n_list, time_list, c_list
     # return w_list, v_list, time_list
 
 
 if "__name__" == "__main__":
     main()
-    # plotting_instances.append((n_list, time_list))
-    # return plotting_instances
 
 def wmax(plotting_instances):
     categories = ["very_large_wmax"]
@@ -200,7 +200,7 @@ def wmax(plotting_instances):
 
 def eaplot(plotting_instances = []):
     # plotting_instances = []
-    plotting_instances.append(vlargen(plotting_instances))
+    plotting_instances.append(main(plotting_instances))
     # wmax(plotting_instances)
     # vlargev()
     # print(plotting_instances)

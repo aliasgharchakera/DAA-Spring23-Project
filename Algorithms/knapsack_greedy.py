@@ -113,14 +113,14 @@ def main():
     
     # plt.plot(n_list, time_list, label="max")
     # plt.show()
+    # plotting_instances.append((n_list, time_list))
+    # return plotting_instances
     return n_list, time_list, c_list
     # return w_list, v_list, time_list
 
 
 if "__name__" == "__main__":
     main()
-    # plotting_instances.append((n_list, time_list))
-    # return plotting_instances
 
 def wmax(plotting_instances):
     categories = ["very_large_wmax"]
@@ -170,7 +170,7 @@ def wmax(plotting_instances):
 
 def greedyplot(plotting_instances = []):
     # plotting_instances= []
-    plotting_instances.append(vlargen(plotting_instances))
+    plotting_instances.append(main(plotting_instances))
     # wmax(plotting_instances)
     # print(plotting_instances)
     for data in plotting_instances:
