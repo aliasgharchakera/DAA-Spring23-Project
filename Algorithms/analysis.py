@@ -6,28 +6,39 @@
 import matplotlib.pyplot as plt
 
 # For Dynamic Programming:
-from knapsack_dp import *
+# import knapsack_dp
+from knapsack_dp import dpplot
 
 dp_data = []
-def dp():
-    knapsack_dp.main(dp_data)
-    for data in dp_data :
-        plt.plot(data[0], data[1], color='blue', label="")
-    plt.xlabel('n')
-    plt.ylabel('Time (seconds)')
-    plt.legend()
-    plt.title('Knapsack - DP')
-    plt.show()
-
-dp()
+dpplot(dp_data)
 
 # For EA:
-from knapsack_EA import *
+# import knapsack_EA
+from knapsack_EA import eaplot
+
 EA_data = []
+eaplot(EA_data)
 
 # For Greedy:
-from knapsack_greedy import *
-greedy_data = []
+# import knapsack_greedy
+from knapsack_greedy import greedyplot
 
+greedy_data = []
+greedyplot(greedy_data)
+
+print(dp_data)
 
 # Main plot
+def mainplot():
+    plt.plot(dp_data[0], dp_data[1], color='blue', label='DP')
+    plt.plot(EA_data[0], EA_data[1], color='red', label='EA')
+    plt.plot(greedy_data[0], greedy_data[1], color='green', label='Greedy')
+    # plt.loglog(x_values, y_values)
+    # plt.xlabel('n')
+    # plt.ylabel('Time (seconds)')
+    # plt.grid()
+    plt.legend()
+    plt.title('Knapsack')
+    plt.show()
+
+mainplot()
