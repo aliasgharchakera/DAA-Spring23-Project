@@ -1,5 +1,5 @@
 import os
-from generate_single_instance import very_large_n, very_large_wmax, very_large_n_and_wmax,  very_large_valued_V, very_large_valued_W, very_large_valued_V_and_W
+from generate_single_instance import very_large_n, very_large_wmax, very_large_n_and_wmax, very_large_valued_V, very_large_valued_W, very_large_valued_V_and_W
 from sys import path
 path.append("../../Algorithms/")
 # from knapsack_dp import knapsack_dp
