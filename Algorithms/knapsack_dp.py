@@ -132,6 +132,7 @@ def wmax(plotting_instances):
             f.write(f"{avg_score[i]}, {avg_time[i]}\n")
     
     plotting_instances.append((c_list, time_list))
+    return plotting_instances
 
 def vlargev(plotting_instances):
     categories = ["very_large_valued_V"]
@@ -176,21 +177,23 @@ def vlargev(plotting_instances):
             f.write(f"{avg_score[i]}, {avg_time[i]}\n")
     
     plotting_instances.append((c_list, time_list))
+    return plotting_instances
 
 
-def dpplot(plotting_instances):
+def dpplot(plotting_instances = []):
     # plotting_instances = []
-    vlargen(plotting_instances)
+    plotting_instances.append(vlargen(plotting_instances))
     # wmax(plotting_instances)
     # vlargev()
     # print(plotting_instances)
     for data in plotting_instances:
         plt.plot(data[0], data[1], color='blue', label="")
-    # plt.xlabel('n')
+    plt.xlabel('n')
     plt.ylabel('Time (seconds)')
     plt.legend()
     plt.title('Knapsack - DP')
     plt.show()
+    return plotting_instances
 
 plotting_instances = []
 # dplot(plotting_instances)
