@@ -106,6 +106,7 @@ def vlargen(plotting_instances):
     # plt.plot(n_list, time_list, label="max")
     # plt.show()
     plotting_instances.append((n_list, time_list))
+    return plotting_instances
 
 def wmax(plotting_instances):
     categories = ["very_large_wmax"]
@@ -150,16 +151,17 @@ def wmax(plotting_instances):
             f.write(f"{avg_score[i]}, {avg_time[i]}\n")
     
     plotting_instances.append((c_list, time_list))
+    return plotting_instances
 
 
-def greedyplot(plotting_instances):
+def greedyplot(plotting_instances = []):
     # plotting_instances= []
-    vlargen(plotting_instances)
+    plotting_instances.append(vlargen(plotting_instances))
     # wmax(plotting_instances)
     # print(plotting_instances)
     for data in plotting_instances:
         plt.plot(data[0], data[1], color='blue')
-    # plt.xlabel('c')
+    plt.xlabel('c')
     plt.ylabel('Time (seconds)')
     plt.legend()
     plt.title('Knapsack - Greedy')
