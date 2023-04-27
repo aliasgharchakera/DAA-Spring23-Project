@@ -7,9 +7,9 @@
 auto/
 solution/
 __pycache__/
-/Dataset/very_large_n_and_wmax_group/
-/Dataset/very_large_n_group/
-/Dataset/very_large_wmax_group/
-/Dataset/very_large_valued_V_group/
-/Dataset/very_large_valued_V_and_W_group/
-/Dataset/very_large_valued_W_group/
+# /Dataset/very_large_n_and_wmax_group/
+# /Dataset/very_large_n_group/
+# /Dataset/very_large_wmax_group/
+# /Dataset/very_large_valued_V_group/
+# /Dataset/very_large_valued_V_and_W_group/
+# /Dataset/very_large_valued_W_group/
