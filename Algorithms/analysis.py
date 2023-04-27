@@ -9,22 +9,22 @@ import matplotlib.pyplot as plt
 # import knapsack_dp
 from knapsack_dp import dpplot
 
-dp_data = []
-dpplot(dp_data)
+dp_data_ = []
+dp_data = dpplot(dp_data_)
 
 # For EA:
 # import knapsack_EA
 from knapsack_EA import eaplot
 
-EA_data = []
-eaplot(EA_data)
+EA_data_ = []
+EA_data = eaplot(EA_data_)
 
 # For Greedy:
 # import knapsack_greedy
 from knapsack_greedy import greedyplot
 
-greedy_data = []
-greedyplot(greedy_data)
+greedy_data_ = []
+greedy_data = greedyplot(greedy_data_)
 
 print(dp_data)
 
@@ -34,8 +34,8 @@ def mainplot():
     plt.plot(EA_data[0], EA_data[1], color='red', label='EA')
     plt.plot(greedy_data[0], greedy_data[1], color='green', label='Greedy')
     # plt.loglog(x_values, y_values)
-    # plt.xlabel('n')
-    # plt.ylabel('Time (seconds)')
+    plt.xlabel('n')
+    plt.ylabel('Time (seconds)')
     # plt.grid()
     plt.legend()
     plt.title('Knapsack')
